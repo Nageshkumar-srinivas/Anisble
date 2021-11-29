@@ -1,0 +1,16 @@
+---
+- name: Learn variable declaration and usage inside playbook
+  hosts: all
+  become: yes
+  vars:
+   package: apache2
+   user_allowed: true
+  tasks:
+  - name: we are uninstalling {{package}}
+    apt:
+     name: "{{package}}"
+     state: absent
+  - name: should not there {{package}}
+    service:
+     name: "{{package}}"
+     state: stopped

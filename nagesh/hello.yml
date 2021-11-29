@@ -1,0 +1,15 @@
+- name: create at new file ,delete and copy hosts to tmp.
+  hosts: all
+  tasks:
+   - name: create username file in tmp directory
+     file:
+      path: /tmp/nagesh.txt
+      state: touch
+   - name: delete username file in tmp directory
+     file:
+      path: /tmp/nagesh.txt
+      state: absent   
+   - name: copy hosts file to tmp
+     copy:
+      src: /etc/ansible/hosts
+      dest: /tmp
